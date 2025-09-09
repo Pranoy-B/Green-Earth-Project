@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Green Earth</title>
     <!-- fontawesome cdn -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <!-- daisy ui and tailwind cdn -->
     <link
@@ -110,14 +116,21 @@
 
     <!-- Tree Card Section -->
     <section class="py-10 w-[95%] mx-auto">
-      <div><h2 class="text-3xl font-bold text-center">Choose Your Trees</h2></div>
+      <div>
+        <h2 class="text-3xl font-bold text-center">Choose Your Trees</h2>
+      </div>
       <div class="flex flex-col gap-4 lg:flex-row w-full mx-auto">
         <div class="flex-1 space-y-2 p-3">
           <h3 class="text-xl font-bold">Categories</h3>
-          <p class="bg-[#15803D] w-full rounded-sm p-1 pl-2 text-white">All Trees</p>
+          <p class="bg-green-600 w-full rounded-sm p-1 pl-2 text-white">
+            All Trees
+          </p>
           <div id="category-container" class="space-y-2"></div>
         </div>
-        <div id="card-container" class="lg:flex-[3] grid grid-cols-1 lg:grid lg:grid-cols-3 lg:gap-1 items-stretch">
+        <div
+          id="card-container"
+          class="lg:flex-[3] grid grid-cols-1 gap-3 lg:grid lg:grid-cols-3 lg:gap-1 items-stretch"
+        >
           <!-- <div id="card" class="p-2 space-y-2 max-h-auto">
             <img class="h-[178px] w-full" src="./assets/about.png" alt="">
             <h3 class="text-xl font-bold">Mango Tree</h3>
@@ -129,7 +142,18 @@
             <button class="w-full p-2 rounded-3xl bg-green-700 text-white">Add to Cart</button>
           </div> -->
         </div>
-        <div class="flex-1 p-3"><h3 class="text-xl font-bold">Your Cart</h3></div>
+        <div class="flex-1 p-3 h-full">
+          <h3 class="text-xl font-bold">Your Cart</h3>
+          <div class="flex-1 h-full" id="cart-container">
+            <!-- <div class="p-2 flex justify-between">
+              <span>plant name</span>
+              <span>
+                <i class="fa-solid fa-bangladeshi-taka-sign"></i> price
+                <button class="remove-item ml-2 text-red-600 font-bold">x</button>
+              </span>
+            </div> -->
+          </div>
+        </div>  
       </div>
     </section>
 
