@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Green Earth</title>
+
+    <!--css  -->
+    <link rel="stylesheet" href="./style/style.css" />
     <!-- fontawesome cdn -->
     <link
       rel="stylesheet"
@@ -114,7 +117,7 @@
       </div>
     </section>
 
-    <!-- Tree Card Section -->
+    <!-- Tree category and card Section -->
     <section class="py-10 w-[95%] mx-auto">
       <div>
         <h2 class="text-3xl font-bold text-center">Choose Your Trees</h2>
@@ -129,7 +132,7 @@
         </div>
         <div
           id="card-container"
-          class="lg:flex-[3] grid grid-cols-1 gap-3 lg:grid lg:grid-cols-3 lg:gap-1 items-stretch"
+          class="lg:flex-[3] grid grid-cols-1 gap-5 lg:grid lg:grid-cols-3 lg:gap-1 items-stretch"
         >
           <!-- <div id="card" class="p-2 space-y-2 max-h-auto">
             <img class="h-[178px] w-full" src="./assets/about.png" alt="">
@@ -142,9 +145,12 @@
             <button class="w-full p-2 rounded-3xl bg-green-700 text-white">Add to Cart</button>
           </div> -->
         </div>
-        <div class="flex-1 p-3 h-full">
+        <div class="flex-1 p-3 h-full flex flex-col">
           <h3 class="text-xl font-bold">Your Cart</h3>
-          <div class="flex-1 h-full" id="cart-container">
+          <div
+            class="flex-1 h-full overflow-y-auto space-y-2 p-2"
+            id="cart-container"
+          >
             <!-- <div class="p-2 flex justify-between">
               <span>plant name</span>
               <span>
@@ -153,7 +159,12 @@
               </span>
             </div> -->
           </div>
-        </div>  
+          <button
+            class="w-full rounded-2xl py-2 mt-3 bg-green-700 items-end text-white"
+          >
+            Checkout
+          </button>
+        </div>
       </div>
     </section>
 
@@ -248,6 +259,22 @@
     <footer class="text-center py-5 bg-green-900 text-white">
       © 2025 Green Earth. All Rights Reserved
     </footer>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="tree_detail" class="modal modal-middle sm:modal-middle">
+      <div id="tree-details-container">
+        <h3 class="text-lg font-bold">Hello!</h3>
+        <p class="py-4">Press ESC key or click the button below to close</p>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
