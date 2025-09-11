@@ -8,7 +8,6 @@ const loadCategories = () => {
     .then((json) => displaycategories(json.categories));
 }
 
-
 const displaycategories = (categories) => {
     // get the container & empty it
     const categoryContainer = document.getElementById("category-container");
@@ -31,6 +30,23 @@ const removeActive =() => {
   activeBtn.forEach(btn=>btn.classList.remove("active"))
 }
 
+const loadingSpinner = (status) => {
+  const spinner = document.getElementById("spinner");
+  const cardContainer = document.getElementById("card-container");
+
+  if (!spinner || !cardContainer) {
+    console.warn("Spinner or card-container not found in DOM");
+    return;
+  }
+
+  if (status == true){
+    spinner.classList.remove("hidden")
+    cardContainer.classList.add("hidden")
+  } else {
+    spinner.classList.add("hidden")
+    cardContainer.classList.remove("hidden")
+  }
+}
 
 const loadTreeDetails = async (id) => {
     const url = `https://openapi.programming-hero.com/api/plant/${id}`
@@ -67,9 +83,8 @@ const displayTreeDetails = (plants) =>{
   document.getElementById("tree_detail").showModal()
 }
 
-
-
 const treeByCategory = (id) => {
+  loadingSpinner(true)
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -91,7 +106,7 @@ const displayByCategory = (plants) => {
     for( let plant of plants) {
         const plantCard = document.createElement("div");
         plantCard.innerHTML = `
-            <div class="p-2 h-[650px] space-y-3  card">
+            <div class="p-2 h-[600px] space-y-3  card">
                 <img class="h-[320px] lg:h-[320px] w-full rounded-lg" src="${plant.image}" alt="">
                 <h3 onclick="loadTreeDetails(${plant.id})" class="text-xl font-bold plant-name">${plant.name}</h3>
                 <p class="text-justify card-description">${plant.description}</p>
@@ -106,12 +121,12 @@ const displayByCategory = (plants) => {
 
 
     }
-    cartAdds()
+    loadingSpinner(false)
+    cartAdds()    
  }
 
-
-
 const loadCards = () => {
+    loadingSpinner(true)
     fetch("https://openapi.programming-hero.com/api/plants")
     .then((plant) => plant.json())
     .then((json) => displayCards(json.plants));
@@ -124,7 +139,7 @@ const displayCards = (plants) => {
     for( let plant of plants) {
         const plantCard = document.createElement("div");
         plantCard.innerHTML = `
-            <div class="p-2 lg:h-[650px] space-y-3 card rounded-lg">
+            <div class="p-2 lg:h-[600px] space-y-3 card rounded-lg">
                 <img class="h-[320px] lg:h-[320px] w-full rounded-lg" src="${plant.image}" alt="">
                 <h3 onclick="loadTreeDetails(${plant.id})" class="text-xl font-bold plant-name">${plant.name}</h3>
                 <p class="text-justify card-description">${plant.description}</p>
@@ -138,7 +153,9 @@ const displayCards = (plants) => {
         cardContainer.append(plantCard)
         
     }
+    loadingSpinner(false)
     cartAdds()
+  
 }
 
 const cartAdds = () => {
@@ -175,7 +192,7 @@ const updatedCart = () => {
       <span>${data.name}</span>
       <span>
         <i class="fa-solid fa-bangladeshi-taka-sign"></i>${data.price}
-        <button class="cancel ml-2 text-red-600 font-bold">x</button>
+        <button class="cancel ml-2 text-red-700 font-bold">x</button>
       </span>
     `
     cartContainer.appendChild(div);
@@ -197,5 +214,7 @@ const updatedCart = () => {
 }
 
 
-loadCards()
-loadCategories()
+document.addEventListener("DOMContentLoaded", () => {
+  loadCards();
+  loadCategories();
+});
